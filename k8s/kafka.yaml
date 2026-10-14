@@ -47,8 +47,8 @@ spec:
               command: ["/opt/kafka/bin/kafka-broker-api-versions.sh", "--bootstrap-server=localhost:9092"]
             initialDelaySeconds: 15
             periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 5
+            timeoutSeconds: 15
+            failureThreshold: 10
 ---
 apiVersion: v1
 kind: Service
