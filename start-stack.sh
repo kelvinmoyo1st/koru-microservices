@@ -8,6 +8,7 @@ until [ "$(docker inspect -f '{{.State.Health.Status}}' kafka 2>/dev/null)" = "h
 done
 echo "Applying Codespaces inter-container networking fix (non-persistent, needed after every fresh VM boot)..."
 sudo iptables-legacy -I DOCKER-USER -i br-+ -o br-+ -j ACCEPT
+sudo iptables-legacy -I DOCKER-USER -j ACCEPT  # needed for postgres too
 sudo iptables-legacy -I DOCKER-USER -j ACCEPT  # also needed for minikube's outbound internet access
 echo "Stack ready:"
 docker compose ps
